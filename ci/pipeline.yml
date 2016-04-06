@@ -1,0 +1,23 @@
+resources:
+  - name: learn.concourse.docker
+    type: git
+    source:
+      uri: git@github.com:tankanow/learn.concourse.docker.git
+      branch: master
+      private_key: {{tankanow-github-private-key}}
+
+  - name: learn.concourse.docker-image
+    type: docker-image
+    source:
+      repository: atankanow/learn.concourse.docker-image
+      email: atankanow@massmutual.com
+      name: atankanow
+      password: {{atankanow-dockerhub-pw}}
+
+jobs:
+  - name: build-push-image
+    plan:
+      - get: learn.concourse.docker
+        trigger: true
+      - put: learn.concourse.docker-image
+        params: {build: learn.concourse.docker}
