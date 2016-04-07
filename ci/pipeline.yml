@@ -26,4 +26,4 @@ jobs:
       - get: learn.concourse.docker
         trigger: true
       - task: print-version
-        file: ci/docker-version.yml
+        file: learn.concourse.docker/ci/docker-version.yml
