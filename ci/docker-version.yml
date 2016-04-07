@@ -5,4 +5,4 @@ inputs:
 - name: learn.concourse.docker
 
 run:
-  path: my-app/ci/docker-version.sh
+  path: learn.concourse.docker/ci/docker-version.sh
