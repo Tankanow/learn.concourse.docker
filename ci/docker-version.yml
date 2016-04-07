@@ -5,4 +5,9 @@ inputs:
 - name: learn.concourse.docker
 
 run:
+  # path: sh
+  # args:
+  #   - -exc
+  #   - |
+  #     ls -l learn.concourse.docker/ci/docker-version.sh
   path: learn.concourse.docker/ci/docker-version.sh
