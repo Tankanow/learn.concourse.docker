@@ -10,9 +10,9 @@ resources:
     type: docker-image
     source:
       repository: atankanow/learn.concourse.docker-image
-      email: atankanow@massmutual.com
-      name: atankanow
-      password: {{atankanow-dockerhub-pw}}
+      email: {{docker-email}}
+      name: {{docker-username}}
+      password: {{docker-password}}
 
 jobs:
   - name: build-push-image
@@ -21,3 +21,9 @@ jobs:
         trigger: true
       - put: learn.concourse.docker-image
         params: {build: learn.concourse.docker}
+  - name: docker-version
+    plan:
+      - get: learn.concourse.docker
+        trigger: true
+      - task: print-version
+        file: ci/docker-version.yml
